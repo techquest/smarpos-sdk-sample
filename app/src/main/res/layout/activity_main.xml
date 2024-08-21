@@ -100,11 +100,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/green_tint"
+        android:minWidth="124dp"
+        android:minHeight="124dp"
         app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:cardElevation="0dp"
         app:layout_constraintStart_toEndOf="@id/btn_purchase"
-        app:layout_constraintBottom_toBottomOf="@id/btn_purchase">
+        app:layout_constraintBottom_toBottomOf="@id/btn_purchase"
+        app:layout_constraintTop_toTopOf="@id/btn_purchase"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
