@@ -10,7 +10,12 @@ material = "1.12.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
 
+#SmartPos dependency versions
+smartposCore = "2.2.7"
+smartposPax = "2.2.6"
+
 [libraries]
+#Core Applications - Default
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -19,6 +24,10 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+#SmartPos dependencies
+smartpos-core = { group = "com.interswitchng", name = "smart-pos-core", version.ref = "smartposCore" }
+smartpos-pax = { group = "com.interswitchng", name = "smart-pos-emv-pax", version.ref = "smartposPax" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
