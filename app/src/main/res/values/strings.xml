@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">SmartPos SDK sample</string>
+    <string name="key_download_button">Key download button</string>
+    <string name="download_keys">Download keys</string>
+    <string name="make_purchase">Make purchase</string>
+    <string name="make_purchase_button">Make purchase button</string>
+    <string name="call_home">Call Home</string>
+    <string name="call_home_button">Call home button</string>
+    <string name="launch_settings_button">Launch settings button</string>
+    <string name="print_data">Print data</string>
+    <string name="launch_settings">Launch settings</string>
 </resources>
