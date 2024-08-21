@@ -61,7 +61,7 @@
         android:id="@+id/btn_purchase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/purple_tint"
         android:minWidth="124dp"
         android:minHeight="124dp"
