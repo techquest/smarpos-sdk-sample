@@ -9,4 +9,5 @@
     <string name="launch_settings_button">Launch settings button</string>
     <string name="print_data">Print data</string>
     <string name="launch_settings">Launch settings</string>
+    <string name="amount">Amount</string>
 </resources>
