@@ -3,3 +3,8 @@ plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
 }
+repositories {
+    google()
+    maven { setUrl("https://jitpack.io") }
+    mavenCentral()
+}
