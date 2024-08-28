@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#33fff5dc"
+    tools:context=".PrintActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow_tint"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleCentered="true"
+        tools:title="Print Data" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_print_text"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/text_to_print"
+        app:boxStrokeColor="#cc9f45"
+        app:cursorColor="#cc9f45"
+        app:hintTextColor="#cc9f45"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_amount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/cera_pro_medium" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_switch_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_print_text">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/cera_pro_medium"
+            android:text="@string/is_title_field"
+            android:textSize="14sp" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/sw_is_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:thumbTint="@color/thumb_color_print_title_switch"
+            app:trackTint="@color/track_color_print_title_switch" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_print_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#ffedc2"
+        android:fontFamily="@font/cera_pro_medium"
+        android:text="@string/add_text"
+        android:textColor="#B3000000"
+        app:cornerRadius="6dp"
+        app:layout_constraintEnd_toStartOf="@id/btn_add_print_logo"
+        app:layout_constraintHorizontal_weight="1.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_switch_title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_print_logo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:backgroundTint="#ffedc2"
+        android:fontFamily="@font/cera_pro_medium"
+        android:text="@string/add_saved_logo"
+        android:textColor="#B3000000"
+        app:cornerRadius="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@id/btn_add_print_text"
+        app:layout_constraintTop_toTopOf="@id/btn_add_print_text" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_print_all"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#cc9f45"
+        android:fontFamily="@font/cera_pro_medium"
+        android:text="@string/print_all"
+        app:cornerRadius="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_print_text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/stroke_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_print_all"
+        app:layout_constraintVertical_bias="0">
+
+        <TextView
+            android:id="@+id/tv_print_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="@font/cera_pro_medium"
+            android:text="@string/perform_print_to_view_print_status"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+
+    <!-- attribution view container -->
+    <LinearLayout
+        android:id="@+id/attribution"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/cera_pro_light"
+            android:gravity="center"
+            android:text="@string/powered_by"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/interswitch_logo"
+            android:gravity="center"
+            android:src="@drawable/isw_logo" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
