@@ -17,15 +17,32 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("kozenConfig") {
+            keyAlias = "ISWKozenOSSignature"
+            keyPassword = "ISWKozen2024"
+            storeFile = file("kozen2024.jks")
+            storePassword = "ISWKozen2024"
+        }
+    }
+
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            applicationIdSuffix = ".kozen.release"
+            signingConfig = signingConfigs.getByName("kozenConfig")
+        }
+        debug {
+            applicationIdSuffix = ".kozen.debug"
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -48,7 +65,12 @@ dependencies {
 
     // SmartPos dependencies
     implementation(libs.smartpos.core)
-    implementation(libs.smartpos.pax)
+    api(libs.smartpos.kozen)
+
+    implementation(files("libs/koin-android-1.0.2.aar"))
+    implementation(files("libs/koin-android-viewmodel-1.0.2.aar"))
+//    implementation(files("libs/kozen_emv_bundle.aar"))
+    implementation(files("libs/app-release.aar"))
 
     // Test dependencies
     testImplementation(libs.junit)
