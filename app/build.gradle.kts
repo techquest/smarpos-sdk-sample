@@ -53,6 +53,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+//    packagingOptions {
+//        pickFirst("org.slf4j")
+//    }
 }
 
 dependencies {
@@ -71,6 +74,7 @@ dependencies {
     implementation(files("libs/koin-android-viewmodel-1.0.2.aar"))
 //    implementation(files("libs/kozen_emv_bundle.aar"))
     implementation(files("libs/app-release.aar"))
+//    implementation(files("libs/smart-pos-core-release.aar"))
 
     // Test dependencies
     testImplementation(libs.junit)
