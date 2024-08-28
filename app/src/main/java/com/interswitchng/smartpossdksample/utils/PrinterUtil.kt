@@ -18,10 +18,14 @@ object PrinterUtil {
         printObjects.add(PrintObject.Data(text, if (isTitle) titleConfig() else fieldConfig()))
     }
 
-    fun addBitmap(@DrawableRes drawableResId: Int, context: Context) {
-        val imageBitmap = BitmapFactory.decodeResource(context.resources, drawableResId)
+    fun addBitmap(@DrawableRes drawableResId: Int, isBitmapResource: Boolean, context: Context) {
+        val imageBitmap = if (isBitmapResource) {
+            BitmapFactory.decodeResource(context.resources, drawableResId)
+        } else {
+            vectorDrawableToBitmap(context, drawableResId)
+        }
 
-        printObjects.add(PrintObject.BitMap(imageBitmap))
+        imageBitmap?.let { printObjects.add(PrintObject.BitMap(it)) }
     }
 
     private fun titleConfig(): PrintStringConfiguration {
