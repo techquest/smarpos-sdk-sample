@@ -67,7 +67,7 @@
         android:minHeight="124dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="0dp"
-        app:layout_constraintEnd_toStartOf="@id/btn_key_download"
+        app:layout_constraintEnd_toStartOf="@id/btn_set_company_id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_call_home">
 
@@ -96,7 +96,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/btn_key_download"
+        android:id="@+id/btn_set_company_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/green_tint"
@@ -121,15 +121,16 @@
                 android:layout_height="28dp"
                 android:layout_gravity="center"
                 android:alpha="0.7"
-                android:contentDescription="@string/key_download_button"
+                android:contentDescription="@string/set_company_logo_button"
                 android:src="@drawable/isw_ic_identity" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/cera_pro_medium"
-                android:text="@string/download_keys"
+                android:text="@string/set_company_logo"
+                android:gravity="center"
                 android:textSize="12sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -209,4 +210,62 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/attribution"
+        android:layout_marginHorizontal="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/disable_hints"
+            android:layout_weight="1"
+            android:fontFamily="@font/cera_pro_medium"
+            android:textSize="13sp"
+            />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/sw_disable_hints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:trackTint="@color/track_color_hint_switch"
+            app:thumbTint="@color/thumb_color_hint_switch"
+            />
+    </LinearLayout>
+
+
+    <!-- attribution view container -->
+    <LinearLayout
+        android:id="@+id/attribution"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:fontFamily="@font/cera_pro_light"
+            android:text="@string/powered_by"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:src="@drawable/isw_logo"
+            android:contentDescription="@string/interswitch_logo" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
