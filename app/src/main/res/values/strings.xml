@@ -10,4 +10,25 @@
     <string name="print_data">Print data</string>
     <string name="launch_settings">Launch settings</string>
     <string name="amount">Amount</string>
+    <string name="interswitch_logo">Interswitch Logo</string>
+    <string name="powered_by">Powered by</string>
+    <string name="set_company_logo_button">Set Company Logo button</string>
+    <string name="set_company_logo">Set Company Logo</string>
+    <string name="interswitch">Interswitch</string>
+    <string name="google_logo">Google Logo</string>
+    <string name="google">Google</string>
+    <string name="amazon">Amazon</string>
+    <string name="amazon_logo">Amazon Logo</string>
+    <string name="apple_inc">Apple Inc.</string>
+    <string name="apple_logo">Apple Logo</string>
+    <string name="check_mark_image">Check mark image</string>
+    <string name="perform_purchase_transaction_to_view_result">Perform purchase transaction to view result...</string>
+    <string name="user_cancelled_the_transaction">User cancelled the transaction</string>
+    <string name="disable_hints">Disable hints</string>
+    <string name="text_to_print">Text to print</string>
+    <string name="print_all">Print All</string>
+    <string name="perform_print_to_view_print_status">Perform print to view print status...</string>
+    <string name="add_saved_logo">Add saved logo</string>
+    <string name="add_text">Add text</string>
+    <string name="is_title_field">Is title field?</string>
 </resources>
