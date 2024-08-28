@@ -1,6 +1,8 @@
 package com.interswitchng.smartpossdksample
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -118,26 +120,32 @@ class PrintActivity : AppCompatActivity(), IswPos.IswPrinterCallback, ViewBindin
     }
 
     override fun onError(result: IswPrintResult) {
-        binding.tvPrintResult.text = buildString {
-            append("Print status: ")
-            append(result.status)
-            append("\nMessage: ")
-            append(result.message)
-        }
+        // Add means of your choice to switch to main thread
+        Handler(Looper.getMainLooper()).post {
+            binding.tvPrintResult.text = buildString {
+                append("Print status: ")
+                append(result.status)
+                append("\nMessage: ")
+                append(result.message)
+            }
 
-        PrinterUtil.resetPrintData()
-        clearFieldsForNextEntry()
+            PrinterUtil.resetPrintData()
+            clearFieldsForNextEntry()
+        }
     }
 
     override fun onPrintCompleted(result: IswPrintResult) {
-        binding.tvPrintResult.text = buildString {
-            append("Print status: ")
-            append(result.status)
-            append("\nMessage: ")
-            append(result.message)
-        }
+        // Add means of your choice to switch to main thread
+        Handler(Looper.getMainLooper()).post {
+            binding.tvPrintResult.text = buildString {
+                append("Print status: ")
+                append(result.status)
+                append("\nMessage: ")
+                append(result.message)
+            }
 
-        PrinterUtil.resetPrintData()
-        clearFieldsForNextEntry()
+            PrinterUtil.resetPrintData()
+            clearFieldsForNextEntry()
+        }
     }
 }
