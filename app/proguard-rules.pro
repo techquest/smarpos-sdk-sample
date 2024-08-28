@@ -19,3 +19,8 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class org.slf4j.** { *; }
+-dontwarn org.slf4j.**
+
+-keep class com.pax.** { *; }
+-dontwarn com.pax.**
