@@ -65,11 +65,11 @@ class PurchaseActivity : AppCompatActivity(), IswPos.IswPaymentCallback, ViewBin
                 CompanyOption.GOOGLE -> setLogo(R.drawable.ic_isw_google, false)
                 CompanyOption.AMAZON -> setLogo(R.drawable.ic_isw_amazon, false)
                 CompanyOption.APPLE -> setLogo(R.drawable.ic_isw_apple, false)
-                CompanyOption.NONE -> {}
+                else -> {}
             }
         } else {
             showSnackBar(
-                "Company logo is not set. Printing will not be possible.",
+                "Company logo is not set. Printing will not occur.",
                 Snackbar.LENGTH_LONG
             )
         }
@@ -88,12 +88,12 @@ class PurchaseActivity : AppCompatActivity(), IswPos.IswPaymentCallback, ViewBin
         }
     }
 
-    private fun setLogo(logoResId: Int, isAlreadyBitmap: Boolean) {
+    private fun setLogo(logoResId: Int, isBitmapResource: Boolean) {
         this.resources?.let { resources ->
 
             // Interswitch logo is a png file, and thus can be converted to bitmap using
             // BitmapFactory. The others aren't
-            if (isAlreadyBitmap) {
+            if (isBitmapResource) {
                 IswPos.setGeneralCompanyLogo(BitmapFactory.decodeResource(resources, logoResId))
             } else {
                 vectorDrawableToBitmap(this, logoResId)?.let {
