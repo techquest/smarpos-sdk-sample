@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#33e9fcf6"
+    tools:context=".CompanyActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_tint"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleCentered="true"
+        tools:title="Company Logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/stroke_border"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar">
+
+        <LinearLayout
+            android:id="@+id/layout_company_interswitch"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/cera_pro_medium"
+                android:text="@string/interswitch" />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/interswitch_logo"
+                android:src="@drawable/isw_logo" />
+
+            <ImageView
+                android:id="@+id/iv_check_mark_interswitch"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp"
+                android:contentDescription="@string/check_mark_image"
+                android:src="@drawable/isw_ic_check"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <LinearLayout
+            android:id="@+id/layout_company_google"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/cera_pro_medium"
+                android:text="@string/google" />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/google_logo"
+                android:src="@drawable/ic_isw_google" />
+
+            <ImageView
+                android:id="@+id/iv_check_mark_google"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp"
+                android:contentDescription="@string/check_mark_image"
+                android:src="@drawable/isw_ic_check"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <LinearLayout
+            android:id="@+id/layout_company_amazon"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/cera_pro_medium"
+                android:text="@string/amazon" />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="4dp"
+                android:contentDescription="@string/amazon_logo"
+                android:src="@drawable/ic_isw_amazon" />
+
+            <ImageView
+                android:id="@+id/iv_check_mark_amazon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp"
+                android:contentDescription="@string/check_mark_image"
+                android:src="@drawable/isw_ic_check"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <LinearLayout
+            android:id="@+id/layout_company_apple"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/cera_pro_medium"
+                android:text="@string/apple_inc" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="24dp"
+                android:contentDescription="@string/apple_logo"
+                android:src="@drawable/ic_isw_apple" />
+
+            <ImageView
+                android:id="@+id/iv_check_mark_apple"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp"
+                android:contentDescription="@string/check_mark_image"
+                android:src="@drawable/isw_ic_check"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- attribution view container -->
+    <LinearLayout
+        android:id="@+id/attribution"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:fontFamily="@font/cera_pro_light"
+            android:text="@string/powered_by"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:src="@drawable/isw_logo"
+            android:contentDescription="@string/interswitch_logo" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
