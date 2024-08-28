@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:background="@color/purple_tint"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Purchase"
-        app:titleCentered="true" />
+        app:titleCentered="true"
+        tools:title="Purchase" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_amount"
@@ -33,6 +33,7 @@
             android:id="@+id/et_amount"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/cera_pro_medium"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,26 +42,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:fontFamily="@font/cera_pro_medium"
         android:text="@string/make_purchase"
         app:cornerRadius="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_amount" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="48dp"
-        android:layout_marginBottom="24dp"
+        android:background="@drawable/stroke_border"
+        android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_make_purchase">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
+            android:id="@+id/tv_transaction_result"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/cera_pro_medium"
+            android:text="@string/perform_purchase_transaction_to_view_result"/>
+    </LinearLayout>
 
+
+    <!-- attribution view container -->
+    <LinearLayout
+        android:id="@+id/attribution"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/cera_pro_light"
+            android:gravity="center"
+            android:text="@string/powered_by"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/interswitch_logo"
+            android:gravity="center"
+            android:src="@drawable/isw_logo" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
