@@ -15,6 +15,7 @@ import com.interswitchng.smartpos.shared.models.core.POSConfig
 import com.interswitchng.smartpossdksample.databinding.ActivityMainBinding
 import com.interswitchng.smartpossdksample.utils.Constants
 import com.interswitchng.smartpossdksample.utils.PrefUtils
+import com.interswitchng.smartpossdksample.utils.PrinterUtil
 import com.interswitchng.smartpossdksample.utils.ViewBindingProvider
 
 class MainActivity : AppCompatActivity(), ViewBindingProvider {
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity(), ViewBindingProvider {
     private val binding get() = _binding!!
 
     private val iswPosInstance: IswPos by lazy { IswPos.getInstance() }
+    private val device by lazy { KozenDeviceImpl.create(this.applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,12 +92,18 @@ class MainActivity : AppCompatActivity(), ViewBindingProvider {
             appVersion = ""
         )
 
-        val device = KozenDeviceImpl.create(this.applicationContext)
         IswPos.setupTerminal(this.application, device, null, config, true)
         KozenModuleHelper().createModule(this.application)
 
         IswPos.setDeviceSetialNumber(device.serialNumber())
+        PrinterUtil.setPosDeviceInstance(device)
+
+        // Set company logo here
+        // device.setCompanyLogo(logoBitmap)
+        // IswPos.setGeneralCompanyLogo(logoBitmap)
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

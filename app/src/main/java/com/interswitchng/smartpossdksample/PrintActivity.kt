@@ -1,5 +1,6 @@
 package com.interswitchng.smartpossdksample
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -17,6 +18,7 @@ import com.interswitchng.smartpossdksample.utils.PrinterUtil
 import com.interswitchng.smartpossdksample.utils.ViewBindingProvider
 import com.interswitchng.smartpossdksample.utils.ViewUtils.showSnackBar
 import com.interswitchng.smartpossdksample.utils.setToolBarTitle
+import com.interswitchng.smartpossdksample.utils.vectorDrawableToBitmap
 
 class PrintActivity : AppCompatActivity(), IswPos.IswPrinterCallback, ViewBindingProvider {
 
@@ -41,15 +43,20 @@ class PrintActivity : AppCompatActivity(), IswPos.IswPrinterCallback, ViewBindin
 
         PrinterUtil.resetPrintData()
         attachViewListeners()
+        attemptSetCompanyLogo()
     }
 
     private fun attachViewListeners() {
         binding.run {
             btnAddPrintText.setOnClickListener {
                 extractPrintText()?.let {
-                    PrinterUtil.addLine(it.first, it.second)
+                    PrinterUtil.addText(it.first, it.second)
                     clearFieldsForNextEntry()
                 }
+            }
+
+            btnAddPrintLine.setOnClickListener {
+                PrinterUtil.addEmptyLine()
             }
 
             btnAddPrintLogo.setOnClickListener {
@@ -84,6 +91,52 @@ class PrintActivity : AppCompatActivity(), IswPos.IswPrinterCallback, ViewBindin
         }
     }
 
+    /**
+     * Company logo always has to be set before any print activity can happen.
+     * It will appear at the top of the printout
+     * ----
+     * ----
+     * It is different from the "Add saved logo" button, that simply appends the saved logo to the list
+     * of items you want to print.
+     */
+    private fun attemptSetCompanyLogo() {
+        val companyLogo = PrefUtils.getSavedCompanyLogoOption(this)
+
+        if (companyLogo != CompanyOption.NONE) {
+            when (companyLogo) {
+                CompanyOption.INTERSWITCH -> setLogo(com.interswitchng.smartpos.R.drawable.isw_logo, true)
+                CompanyOption.GOOGLE -> setLogo(R.drawable.ic_isw_google, false)
+                CompanyOption.AMAZON -> setLogo(R.drawable.ic_isw_amazon, false)
+                CompanyOption.APPLE -> setLogo(R.drawable.ic_isw_apple, false)
+                else -> {}
+            }
+        } else {
+            showSnackBar(
+                "Company logo is not set. Printing will not occur.",
+                Snackbar.LENGTH_LONG
+            )
+        }
+    }
+
+    private fun setLogo(logoResId: Int, isBitmapResource: Boolean) {
+        this.resources?.let { resources ->
+
+            /** Interswitch logo is a png file, and thus can be converted to bitmap using
+             BitmapFactory. The others aren't
+            */
+            val logoBitmap = if (isBitmapResource) {
+                BitmapFactory.decodeResource(resources, logoResId)
+            } else {
+                vectorDrawableToBitmap(this, logoResId)
+            }
+
+            logoBitmap?.let {
+                IswPos.setGeneralCompanyLogo(it)
+                PrinterUtil.getPosDeviceInstance()?.setCompanyLogo(it)
+            }
+        }
+    }
+
     private fun extractPrintText(): Pair<String, Boolean>? {
         binding.run {
 
@@ -112,22 +165,10 @@ class PrintActivity : AppCompatActivity(), IswPos.IswPrinterCallback, ViewBindin
         }
     }
 
-    override fun getRootView(): View = binding.root
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
     override fun onError(result: IswPrintResult) {
         // Add means of your choice to switch to main thread
         Handler(Looper.getMainLooper()).post {
-            binding.tvPrintResult.text = buildString {
-                append("Print status: ")
-                append(result.status)
-                append("\nMessage: ")
-                append(result.message)
-            }
+            binding.tvPrintResult.text = formatPrintResult(result)
 
             PrinterUtil.resetPrintData()
             clearFieldsForNextEntry()
@@ -137,15 +178,27 @@ class PrintActivity : AppCompatActivity(), IswPos.IswPrinterCallback, ViewBindin
     override fun onPrintCompleted(result: IswPrintResult) {
         // Add means of your choice to switch to main thread
         Handler(Looper.getMainLooper()).post {
-            binding.tvPrintResult.text = buildString {
-                append("Print status: ")
-                append(result.status)
-                append("\nMessage: ")
-                append(result.message)
-            }
+            binding.tvPrintResult.text = formatPrintResult(result)
 
             PrinterUtil.resetPrintData()
             clearFieldsForNextEntry()
         }
+    }
+
+    private fun formatPrintResult(result: IswPrintResult): String {
+        return buildString {
+            append("Print status: ")
+            append(result.status)
+            append("\nMessage: ")
+            append(result.message)
+        }
+    }
+
+    override fun getRootView(): View = binding.root
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+        PrinterUtil.setPosDeviceInstance(null)
     }
 }

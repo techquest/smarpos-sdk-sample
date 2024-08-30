@@ -15,6 +15,7 @@ import com.interswitchng.smartpos.shared.models.results.IswTransactionResult
 import com.interswitchng.smartpos.shared.models.transaction.PaymentType
 import com.interswitchng.smartpossdksample.databinding.ActivityPurchaseBinding
 import com.interswitchng.smartpossdksample.utils.PrefUtils
+import com.interswitchng.smartpossdksample.utils.PrinterUtil
 import com.interswitchng.smartpossdksample.utils.StringUtils
 import com.interswitchng.smartpossdksample.utils.ViewBindingProvider
 import com.interswitchng.smartpossdksample.utils.ViewUtils.showSnackBar
@@ -93,22 +94,19 @@ class PurchaseActivity : AppCompatActivity(), IswPos.IswPaymentCallback, ViewBin
 
             // Interswitch logo is a png file, and thus can be converted to bitmap using
             // BitmapFactory. The others aren't
-            if (isBitmapResource) {
-                IswPos.setGeneralCompanyLogo(BitmapFactory.decodeResource(resources, logoResId))
+            val logoBitmap = if (isBitmapResource) {
+                BitmapFactory.decodeResource(resources, logoResId)
             } else {
-                vectorDrawableToBitmap(this, logoResId)?.let {
-                    IswPos.setGeneralCompanyLogo(it)
-                }
+                vectorDrawableToBitmap(this, logoResId)
+            }
+
+            logoBitmap?.let {
+                IswPos.setGeneralCompanyLogo(it)
+                PrinterUtil.getPosDeviceInstance()?.setCompanyLogo(it)
             }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-    override fun getRootView(): View = binding.root
     override fun onPaymentCompleted(result: IswTransactionResult) {
         val formattedResult = StringUtils.formatResult(result)
         binding.tvTransactionResult.text = formattedResult
@@ -116,5 +114,13 @@ class PurchaseActivity : AppCompatActivity(), IswPos.IswPaymentCallback, ViewBin
 
     override fun onUserCancel() {
         binding.tvTransactionResult.text = getString(R.string.user_cancelled_the_transaction)
+    }
+
+    override fun getRootView(): View = binding.root
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+        PrinterUtil.setPosDeviceInstance(null)
     }
 }
