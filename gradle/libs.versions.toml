@@ -11,11 +11,11 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 
 #SmartPos dependency versions
-smartposCore = "2.3.2"
-smartposKozen = "2.3.1"
+smartposCore = "2.3.3"
+smartposKozen = "2.3.3"
 
 [libraries]
-#Core Applications - Default
+#Core Dependencies - Default
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

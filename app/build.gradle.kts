@@ -66,15 +66,16 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    // SmartPos dependencies
+    // SmartPos dependencies - Core & Kozen
     implementation(libs.smartpos.core)
     api(libs.smartpos.kozen)
 
+    // AAR files for dependencies needed to run
     implementation(files("libs/koin-android-1.0.2.aar"))
     implementation(files("libs/koin-android-viewmodel-1.0.2.aar"))
-//    implementation(files("libs/kozen_emv_bundle.aar"))
-    implementation(files("libs/app-release.aar"))
-//    implementation(files("libs/smart-pos-core-release.aar"))
+
+    // Handles EMV with Kozen
+    implementation(files("libs/kozen_emv_bundle_manual_di.aar"))
 
     // Test dependencies
     testImplementation(libs.junit)
