@@ -31,4 +31,5 @@
     <string name="add_saved_logo">Add saved logo</string>
     <string name="add_text">Add text</string>
     <string name="is_title_field">Is title field?</string>
+    <string name="add_empty_line">Add empty line</string>
 </resources>
