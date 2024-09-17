@@ -11,8 +11,8 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 
 #SmartPos dependency versions
-smartposCore = "2.3.1"
-smartposKozen = "2.3.1"
+smartposCore = "2.3.3"
+smartposPax = "2.3.3"
 
 [libraries]
 #Core Applications - Default
@@ -27,7 +27,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 
 #SmartPos dependencies
 smartpos-core = { group = "com.interswitchng", name = "smart-pos-core", version.ref = "smartposCore" }
-smartpos-kozen = { group = "com.interswitchng", name = "smart-pos-emv-kozen", version.ref = "smartposKozen" }
+smartpos-pax = { group = "com.interswitchng", name = "smart-pos-emv-pax", version.ref = "smartposPax" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.interswitchng.smartpos.IswPos
-import com.interswitchng.smartpos.KozenDeviceImpl
-import com.interswitchng.smartpos.KozenModuleHelper
+import com.interswitchng.smartpos.emv.pax.services.POSDeviceImpl
 import com.interswitchng.smartpos.shared.models.core.Environment
 import com.interswitchng.smartpos.shared.models.core.POSConfig
 import com.interswitchng.smartpossdksample.databinding.ActivityMainBinding
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity(), ViewBindingProvider {
     private val binding get() = _binding!!
 
     private val iswPosInstance: IswPos by lazy { IswPos.getInstance() }
-    private val device by lazy { KozenDeviceImpl.create(this.applicationContext) }
+    private val device by lazy { POSDeviceImpl.create(this.applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +92,6 @@ class MainActivity : AppCompatActivity(), ViewBindingProvider {
         )
 
         IswPos.setupTerminal(this.application, device, null, config, true)
-        KozenModuleHelper().createModule(this.application)
 
         IswPos.setDeviceSetialNumber(device.serialNumber())
         PrinterUtil.setPosDeviceInstance(device)

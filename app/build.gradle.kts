@@ -20,10 +20,16 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            applicationIdSuffix = ".pax.release"
+        }
+
+        debug {
+            applicationIdSuffix = ".pax.debug"
         }
     }
     compileOptions {
@@ -48,7 +54,16 @@ dependencies {
 
     // SmartPos dependencies
     implementation(libs.smartpos.core)
-    implementation(libs.smartpos.pax)
+    implementation(libs.smartpos.pax) {
+        exclude(module = "smart-pos-core")
+    }
+
+    // AAR files for dependencies needed to run
+    implementation(files("libs/koin-android-1.0.2.aar"))
+    implementation(files("libs/koin-android-viewmodel-1.0.2.aar"))
+
+    // Handles EMV with Kozen
+    implementation(files("libs/kozen_emv_bundle_manual_di.aar"))
 
     // Test dependencies
     testImplementation(libs.junit)
