@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
 import androidx.annotation.DrawableRes
-import com.interswitchng.smartpos.KozenDeviceImpl
+import com.interswitchng.smartpos.emv.pax.services.POSDeviceImpl
 import com.interswitchng.smartpos.shared.models.posconfig.PrintObject
 import com.interswitchng.smartpos.shared.models.posconfig.PrintStringConfiguration
 
@@ -18,7 +18,7 @@ object PrinterUtil {
      You can simply set the logo once, at the point of configuring the terminal as specified in
      MainActivity.
     */
-    private var posDeviceInstance: KozenDeviceImpl? = null
+    private var posDeviceInstance: POSDeviceImpl? = null
 
     private var printObjects: MutableList<PrintObject> = mutableListOf()
 
@@ -60,7 +60,7 @@ object PrinterUtil {
         )
     }
 
-    fun setPosDeviceInstance(deviceImpl: KozenDeviceImpl?) {
+    fun setPosDeviceInstance(deviceImpl: POSDeviceImpl?) {
         posDeviceInstance = deviceImpl
     }
 

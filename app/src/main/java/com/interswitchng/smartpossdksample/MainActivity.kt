@@ -97,8 +97,8 @@ class MainActivity : AppCompatActivity(), ViewBindingProvider {
         PrinterUtil.setPosDeviceInstance(device)
 
         // Set company logo here
-        // device.setCompanyLogo(logoBitmap)
-        // IswPos.setGeneralCompanyLogo(logoBitmap)
+//         device.setCompanyLogo(logoBitmap)
+//         IswPos.setGeneralCompanyLogo(logoBitmap)
     }
 
 
