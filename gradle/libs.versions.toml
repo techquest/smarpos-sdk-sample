@@ -12,7 +12,7 @@ constraintlayout = "2.1.4"
 
 #SmartPos dependency versions
 smartposCore = "2.3.9"
-smartposPax = "2.3.7"
+smartposPax = "2.3.9"
 
 [libraries]
 #Core Applications - Default
