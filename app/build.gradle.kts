@@ -68,7 +68,7 @@ dependencies {
 
     // SmartPos dependencies - Core & Kozen
     implementation(libs.smartpos.core)
-    api(libs.smartpos.kozen)
+    implementation(libs.smartpos.kozen)
 
     // Handles EMV with Kozen
     implementation(files("libs/kozen_emv_bundle_manual_di.aar"))

@@ -155,7 +155,7 @@ class PrintActivity : AppCompatActivity(), IswPos.IswPrinterCallback, ViewBindin
 
     private fun tryPrint() {
         val printObjects = PrinterUtil.getPrintData()
-        iswPosInstance.print(printObjects, this)
+        iswPosInstance.print(printObjects, this, false)
     }
 
     private fun clearFieldsForNextEntry() {
