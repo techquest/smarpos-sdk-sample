@@ -53,17 +53,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     // SmartPos dependencies
-    implementation(libs.smartpos.core) {
-        exclude(group = "org.koin")
-    }
-
+    implementation(libs.smartpos.core)
     implementation(libs.smartpos.pax)
-
-    // AAR files for dependencies needed to run
-    implementation(files("libs/koin-core-1.0.2.jar"))
-    implementation(files("libs/koin-test-1.0.2.jar"))
-    implementation(files("libs/koin-android-1.0.2.aar"))
-    implementation(files("libs/koin-android-viewmodel-1.0.2.aar"))
 
     // Pax Kernel SDK
     implementation(files("libs/NeptuneLiteApi_V2.03.00_20180208.jar"))
