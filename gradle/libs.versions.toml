@@ -11,8 +11,8 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 
 #SmartPos dependency versions
-smartposCore = "2.3.3"
-smartposKozen = "2.3.3"
+smartposCore = "2.3.9"
+smartposKozen = "2.3.4"
 
 [libraries]
 #Core Dependencies - Default

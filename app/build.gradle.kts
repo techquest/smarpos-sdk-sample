@@ -70,10 +70,6 @@ dependencies {
     implementation(libs.smartpos.core)
     api(libs.smartpos.kozen)
 
-    // AAR files for dependencies needed to run
-    implementation(files("libs/koin-android-1.0.2.aar"))
-    implementation(files("libs/koin-android-viewmodel-1.0.2.aar"))
-
     // Handles EMV with Kozen
     implementation(files("libs/kozen_emv_bundle_manual_di.aar"))
 

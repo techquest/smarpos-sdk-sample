@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter()
+        maven { setUrl("https://mirrors.huaweicloud.com/repository/maven/") }
         maven { setUrl("https://jitpack.io") }
     }
 }
