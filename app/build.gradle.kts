@@ -53,9 +53,6 @@ android {
     buildFeatures {
         viewBinding = true
     }
-//    packagingOptions {
-//        pickFirst("org.slf4j")
-//    }
 }
 
 dependencies {
