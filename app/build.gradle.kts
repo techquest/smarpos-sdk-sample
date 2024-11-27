@@ -70,8 +70,8 @@ dependencies {
     implementation(libs.smartpos.core)
     implementation(libs.smartpos.kozen)
 
-    // Handles EMV with Kozen
-    implementation(files("libs/kozen_emv_bundle_manual_di.aar"))
+    // Kozen EMV library
+    implementation(files("libs/kozen_emv_bundle_mdi_2.41.aar"))
 
     // Test dependencies
     testImplementation(libs.junit)
