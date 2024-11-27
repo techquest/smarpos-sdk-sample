@@ -11,8 +11,8 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 
 #SmartPos dependency versions
-smartposCore = "2.3.9"
-smartposPax = "2.3.9"
+smartposCore = "2.4.1"
+smartposPax = "2.4.1"
 
 [libraries]
 #Core Applications - Default
