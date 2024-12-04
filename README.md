@@ -16,7 +16,18 @@ git clone https://github.com/techquest/smartpos-sdk-sample.git
 ```
 2. Open the project in Android Studio.
 3. Sync Gradle files to download the required dependencies.
-4. Configure the SDK with your credentials, and follow the payment flow as explained in the documentation [here](https://docs.interswitchgroup.com/docs/smartpos-sdk).
+4. Each branch contains device-specific implementation, checkout your desired branch.
+5. Configure the SDK with your credentials in the secrets.properties file like so
+   ``` properties
+   // secret.properties - in project root directory
+   
+    CLIENT_ID=xxxxxxxxxxxxxxxxxxxx
+    CLIENT_SECRET=xxxxxxxxxxxxxxx
+    ALIAS=xxxxx
+    MERCHANT_CODE=xxxxx
+    MERCHANT_TELEPHONE=xxxxx
+   ```
+6. Follow the payment flow as explained in the documentation [here](https://docs.interswitchgroup.com/docs/smartpos-sdk).
 
 ## Usage
 * Build and run the app on a connected POS terminal device.
