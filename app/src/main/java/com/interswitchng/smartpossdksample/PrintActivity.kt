@@ -56,7 +56,7 @@ class PrintActivity : AppCompatActivity(), IswPos.IswPrinterCallback, ViewBindin
             }
 
             btnAddPrintLine.setOnClickListener {
-                PrinterUtil.addEmptyLine()
+                PrinterUtil.addNewLine()
             }
 
             btnAddPrintLogo.setOnClickListener {

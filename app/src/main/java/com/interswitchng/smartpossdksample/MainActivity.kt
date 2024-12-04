@@ -13,7 +13,6 @@ import com.interswitchng.smartpos.KozenModuleHelper
 import com.interswitchng.smartpos.shared.models.core.Environment
 import com.interswitchng.smartpos.shared.models.core.POSConfig
 import com.interswitchng.smartpossdksample.databinding.ActivityMainBinding
-import com.interswitchng.smartpossdksample.utils.Constants
 import com.interswitchng.smartpossdksample.utils.PrefUtils
 import com.interswitchng.smartpossdksample.utils.PrinterUtil
 import com.interswitchng.smartpossdksample.utils.ViewBindingProvider
@@ -83,11 +82,11 @@ class MainActivity : AppCompatActivity(), ViewBindingProvider {
         val environment = Environment.Production
 
         val config = POSConfig(
-            alias = Constants.ALIAS,
-            clientId = Constants.CLIENT_ID,
-            clientSecret = Constants.CLIENT_SECRET,
-            merchantCode = Constants.MERCHANT_CODE,
-            merchantTelephone = Constants.MERCHANT_TELEPHONE,
+            alias = BuildConfig.ALIAS,
+            clientId = BuildConfig.CLIENT_ID,
+            clientSecret = BuildConfig.CLIENT_SECRET,
+            merchantCode = BuildConfig.MERCHANT_CODE,
+            merchantTelephone = BuildConfig.MERCHANT_TELEPHONE,
             environment = environment,
             appVersion = ""
         )
@@ -98,9 +97,9 @@ class MainActivity : AppCompatActivity(), ViewBindingProvider {
         IswPos.setDeviceSetialNumber(device.serialNumber())
         PrinterUtil.setPosDeviceInstance(device)
 
-        // Set company logo here
-        // device.setCompanyLogo(logoBitmap)
-        // IswPos.setGeneralCompanyLogo(logoBitmap)
+        // Set company logo here if you wish, this is left out because it is set in CompanyActivity
+//         device.setCompanyLogo(logoBitmap)
+//         IswPos.setGeneralCompanyLogo(logoBitmap)
     }
 
 

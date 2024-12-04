@@ -30,8 +30,8 @@ object PrinterUtil {
         printObjects.add(PrintObject.Data(text, if (isTitle) titleConfig() else fieldConfig()))
     }
 
-    fun addEmptyLine() {
-        printObjects.add(PrintObject.Line)
+    fun addNewLine() {
+        printObjects.add(PrintObject.Data("\n", fieldConfig()))
     }
 
     fun addBitmap(@DrawableRes drawableResId: Int, isBitmapResource: Boolean, context: Context) {
