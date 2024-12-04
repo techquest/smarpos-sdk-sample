@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -15,6 +17,21 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Read properties from secrets.properties
+        val secretsProperties = Properties().apply {
+            val secretsFile = rootProject.file("secrets.properties")
+            if (secretsFile.exists()) {
+                load(secretsFile.inputStream())
+            }
+        }
+
+        // Add each property as a build config field
+        buildConfigField("String", "CLIENT_ID", "\"${secretsProperties["CLIENT_ID"] ?: ""}\"")
+        buildConfigField("String", "CLIENT_SECRET", "\"${secretsProperties["CLIENT_SECRET"] ?: ""}\"")
+        buildConfigField("String", "ALIAS", "\"${secretsProperties["ALIAS"] ?: ""}\"")
+        buildConfigField("String", "MERCHANT_CODE", "\"${secretsProperties["MERCHANT_CODE"] ?: ""}\"")
+        buildConfigField("String", "MERCHANT_TELEPHONE", "\"${secretsProperties["MERCHANT_TELEPHONE"] ?: ""}\"")
     }
 
     buildTypes {
@@ -41,6 +58,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
